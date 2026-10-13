@@ -5,8 +5,8 @@ import { AdminDashboard } from './AdminDashboard';
 
 export const metadata = { robots: { index: false, follow: false } };
 
-export default function AdminPage() {
-  const token = cookies().get(ADMIN_COOKIE_NAME)?.value;
+export default async function AdminPage() {
+  const token = (await cookies()).get(ADMIN_COOKIE_NAME)?.value;
   if (!verifyAdminToken(token)) {
     redirect('/admin/login');
   }

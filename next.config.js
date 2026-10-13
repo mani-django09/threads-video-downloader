@@ -35,13 +35,9 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
-  images: {
-    formats: ['image/avif', 'image/webp'],
-    remotePatterns: [
-      { protocol: 'https', hostname: '**.cdninstagram.com' },
-      { protocol: 'https', hostname: '**.fbcdn.net' },
-    ],
-  },
+  // The site does not use next/image, so the image optimizer endpoint is switched off
+  // entirely rather than left exposed.
+  images: { unoptimized: true },
   async headers() {
     return [
       {
