@@ -1,0 +1,64 @@
+// Operational analytics only. We never persist third-party media here, and
+// never a raw IP address or user agent (only salted hashes + coarse device info).
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model DownloadEvent {
+  id             String   @id @default(cuid())
+  createdAt      DateTime @default(now())
+  // page_view | fetch_start | fetch_success | fetch_error | download_click |
+  // download_success | download_error | download_aborted | rate_limited
+  event          String
+  status         String // "success" | "error"
+  provider       String   @default("threads")
+  mediaType      String? // "video" | "image" | "gif"
+  processingMs   Int?
+  fileSize       Int?
+  errorCode      String?
+  ipHash         String? // salted hash, never raw IP
+  userAgentHash  String?
+  page           String? // route (page_view) or API path
+  // Added for per-visitor activity tracking. All nullable so old rows stay valid.
+  visitorId      String? // hash(ip + user agent): one id per browser/network
+  device         String? // mobile | tablet | desktop
+  browser        String?
+  os             String?
+  referrer       String? // referring host only, never the full URL
+  postId         String? // public Threads post id (not private data)
+  author         String? // public @username of the post
+  // Raw client IP: kept only for security/abuse handling and the admin panel,
+  // deleted with the rest of the row after the retention period.
+  ip             String?
+  // Traffic source, set on the first page view of a visit ("entry" = true).
+  entry          Boolean  @default(false)
+  source         String? // Google | Bing | Facebook | Direct | <referrer host> ...
+  medium         String? // organic search | social | referral | email | campaign | direct
+  campaign       String? // utm_campaign
+
+  @@index([createdAt])
+  @@index([event])
+  @@index([status])
+  @@index([visitorId, createdAt])
+  @@index([ip])
+}
+
+// IPs the admin has blocked from the lookup and download endpoints.
+model BlockedIp {
+  ip        String   @id
+  reason    String?
+  createdAt DateTime @default(now())
+}
+
+model RateLimitBucket {
+  id        String   @id // hashed key: `${scope}:${ipHash}`
+  count     Int      @default(0)
+  resetAt   DateTime
+
+  @@index([resetAt])
+}

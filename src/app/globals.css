@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Lets the gradient border rotate smoothly. Browsers without @property simply
+   show the same gradient without the rotation. */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+:root {
+  --header-h: 64px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-canvas text-ink antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(99, 91, 255, 0.22);
+}
+
+:focus-visible {
+  outline: 2px solid #635bff;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@layer components {
+  .container-app {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-all duration-200 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply btn relative overflow-hidden bg-ink text-white shadow-pop hover:-translate-y-0.5 hover:shadow-glow;
+  }
+
+  .btn-secondary {
+    @apply btn border border-line bg-white text-ink hover:border-ink/20 hover:bg-brand-soft;
+  }
+
+  /* Gradient call-to-action with a light sweep on hover. */
+  .btn-cta {
+    @apply btn relative overflow-hidden bg-gradient-to-r from-ink via-[#1d1a3a] to-accent-lo text-white shadow-pop hover:-translate-y-0.5 hover:shadow-glow;
+  }
+  .btn-cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 40%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  .btn-cta:hover::after {
+    animation: shine 0.9s ease-out;
+  }
+
+  .card {
+    @apply rounded-xl2 border border-line bg-white shadow-card;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-3.5 py-1.5 text-xs font-semibold text-ink-2 shadow-sm backdrop-blur;
+  }
+
+  /* Section scaffolding */
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.18em] text-accent;
+  }
+  .section-title {
+    @apply mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl;
+  }
+  .section-lead {
+    @apply mt-4 max-w-2xl text-base leading-relaxed text-ink-2 sm:text-lg;
+  }
+
+  .gradient-text {
+    background-image: linear-gradient(110deg, #4f46e5 0%, #9333ea 45%, #db2777 80%, #f97316 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Animated gradient frame around the URL input. */
+  .glow-border {
+    position: relative;
+    border-radius: 2rem;
+    padding: 1.5px;
+    background: conic-gradient(from var(--angle), #635bff, #db2777, #f97316, #22d3ee, #635bff);
+    animation: spin-angle 7s linear infinite;
+    box-shadow: 0 30px 80px -30px rgba(99, 91, 255, 0.5);
+  }
+
+  /* Soft colour clouds behind the hero. Cheap: only transforms animate. */
+  .aurora {
+    position: absolute;
+    inset: 0;
+    z-index: -10;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .aurora::before,
+  .aurora::after {
+    content: '';
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    opacity: 0.55;
+  }
+  .aurora::before {
+    top: -18rem;
+    left: 50%;
+    width: 46rem;
+    height: 34rem;
+    margin-left: -30rem;
+    background: radial-gradient(closest-side, rgba(99, 91, 255, 0.55), transparent);
+    animation: drift 18s ease-in-out infinite;
+  }
+  .aurora::after {
+    top: -12rem;
+    left: 50%;
+    width: 40rem;
+    height: 30rem;
+    margin-left: -2rem;
+    background: radial-gradient(closest-side, rgba(244, 114, 182, 0.45), rgba(251, 146, 60, 0.18) 60%, transparent);
+    animation: drift 26s ease-in-out infinite reverse;
+  }
+
+  /* Hairline grid that fades out, for a technical feel behind the hero. */
+  .grid-fade {
+    background-image:
+      linear-gradient(to right, rgba(16, 16, 28, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(16, 16, 28, 0.045) 1px, transparent 1px);
+    background-size: 44px 44px;
+    -webkit-mask-image: radial-gradient(60% 60% at 50% 0%, #000 30%, transparent 75%);
+    mask-image: radial-gradient(60% 60% at 50% 0%, #000 30%, transparent 75%);
+  }
+
+  .bento {
+    @apply relative overflow-hidden rounded-xl3 border border-line bg-white p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-lift sm:p-7;
+  }
+
+  .prose-content h2 {
+    @apply mt-10 text-2xl font-bold tracking-tight text-ink;
+  }
+  .prose-content h3 {
+    @apply mt-7 text-lg font-semibold text-ink;
+  }
+  .prose-content p {
+    @apply mt-3 leading-relaxed text-ink-2;
+  }
+  .prose-content ul {
+    @apply mt-3 list-disc space-y-2 pl-6 text-ink-2;
+  }
+  .prose-content ol {
+    @apply mt-3 list-decimal space-y-2 pl-6 text-ink-2;
+  }
+  .prose-content a {
+    @apply font-medium text-accent underline underline-offset-2 hover:text-accent-lo;
+  }
+  .prose-content strong {
+    @apply font-semibold text-ink;
+  }
+}
+
+.skeleton {
+  @apply relative overflow-hidden bg-brand-soft;
+  background-image: linear-gradient(90deg, #f4f4f6 0%, #ececf3 50%, #f4f4f6 100%);
+  background-size: 200% 100%;
+}
+
+@keyframes spin-angle {
+  to {
+    --angle: 360deg;
+  }
+}
+@keyframes shine {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(320%) skewX(-18deg);
+  }
+}
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(3%, 4%, 0) scale(1.08);
+  }
+}
+
+/* Stagger helpers for the hero entrance. */
+.delay-1 {
+  animation-delay: 80ms;
+}
+.delay-2 {
+  animation-delay: 170ms;
+}
+.delay-3 {
+  animation-delay: 260ms;
+}
+.delay-4 {
+  animation-delay: 350ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

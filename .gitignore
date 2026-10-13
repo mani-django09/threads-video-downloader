@@ -1,0 +1,36 @@
+# deps
+node_modules/
+
+# next
+.next/
+out/
+build/
+
+# env
+.env
+.env.local
+.env.production
+
+# db
+prisma/dev.db
+prisma/dev.db-journal
+*.db
+*.db-journal
+
+# deployment: TLS private keys and database backups must never be committed
+deploy/certbot/
+backups/
+
+# logs
+*.log
+npm-debug.log*
+
+# misc
+.DS_Store
+*.pem
+.vercel
+next-env.d.ts
+
+# local tooling
+.claude/
+*.tsbuildinfo

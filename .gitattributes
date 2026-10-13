@@ -1,0 +1,4 @@
+# Shell scripts must keep LF endings or they fail inside Linux containers/VPS.
+*.sh text eol=lf
+Dockerfile text eol=lf
+*.conf text eol=lf

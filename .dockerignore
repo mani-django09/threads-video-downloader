@@ -1,0 +1,15 @@
+# Never bake local secrets, dependencies or build output into the image.
+node_modules
+.next
+.git
+.env
+.env.*
+!.env.example
+*.db
+*.db-journal
+npm-debug.log*
+.claude
+deploy/certbot
+backups
+*.md
+tsconfig.tsbuildinfo
