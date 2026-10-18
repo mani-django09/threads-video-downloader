@@ -139,8 +139,7 @@ export function VideoDownloaderMore() {
           </p>
         </Callout>
         <p>
-          Related reading: <Link href="/threads-to-mp4/">what the MP4 file is and how to make an MP3 or GIF from it</Link>, and{' '}
-          <Link href="/meta-ai-video-downloader/">what works for AI-generated videos</Link>.
+          Related reading: <Link href="/threads-to-mp4/">what the MP4 file is and how to make an MP3 or GIF from it</Link>.
         </p>
         <p>
           If you are a rights holder and think a post has been copied against your wishes, the <Link href="/dmca/">copyright page</Link> explains how to tell us, and how
