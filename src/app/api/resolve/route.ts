@@ -7,6 +7,7 @@ import { getVisitor } from '@/lib/visitor';
 import { logEvent } from '@/lib/logger';
 import { issueDownloadToken } from '@/lib/downloadTokens';
 import { isBlocked } from '@/lib/blocklist';
+import { isAllowedDownloadHost } from '@/lib/security';
 
 export const runtime = 'nodejs';
 
@@ -17,6 +18,17 @@ const INVALID_URL = {
   success: false,
   error: { code: 'INVALID_URL', message: 'Please enter a valid Threads post URL.' },
 } as const;
+
+/** A download handle for the cover image, only when it is hosted on an allowed CDN. */
+function thumbnailToken(thumbnail: string | undefined, postId: string, author: string | undefined): string | undefined {
+  if (!thumbnail) return undefined;
+  try {
+    if (!isAllowedDownloadHost(new URL(thumbnail).hostname)) return undefined;
+  } catch {
+    return undefined;
+  }
+  return issueDownloadToken({ url: thumbnail, postId, author, mediaType: 'image' });
+}
 
 export async function POST(req: NextRequest) {
   const visitor = getVisitor(req.headers);
@@ -94,6 +106,7 @@ export async function POST(req: NextRequest) {
         mediaKind: media.mediaKind,
         caption: media.caption,
         thumbnail: media.thumbnail,
+        thumbnailDownloadId: thumbnailToken(media.thumbnail, media.postId, media.author?.username),
         author: media.author,
         durationSeconds: media.durationSeconds,
         // downloadId is the short handle the download endpoint accepts in place

@@ -14,6 +14,8 @@ export interface ResolvedMediaDto {
   mediaKind: 'video' | 'image' | 'gif';
   caption?: string;
   thumbnail?: string;
+  /** Short handle for saving the cover image through /api/download/. */
+  thumbnailDownloadId?: string;
   author?: { username: string; displayName?: string };
   durationSeconds?: number;
   qualities: MediaQualityDto[];

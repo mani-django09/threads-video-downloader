@@ -7,6 +7,8 @@ const COLUMNS: Array<{ title: string; links: Array<{ href: string; label: string
       { href: '/threads-video-downloader/', label: 'Threads Video Downloader' },
       { href: '/threads-image-downloader/', label: 'Threads Image Downloader' },
       { href: '/threads-gif-downloader/', label: 'Threads GIF Downloader' },
+      { href: '/threads-to-mp4/', label: 'Threads to MP4' },
+      { href: '/meta-ai-video-downloader/', label: 'Meta AI Video Downloader' },
     ],
   },
   {

@@ -1,6 +1,6 @@
 'use client';
 
-type AnalyticsEvent = 'page_view' | 'downloader_start' | 'downloader_success' | 'downloader_error' | 'download_click';
+type AnalyticsEvent = 'page_view' | 'downloader_start' | 'downloader_success' | 'downloader_error' | 'download_click' | 'caption_copy' | 'thumbnail_download';
 
 declare global {
   interface Window {

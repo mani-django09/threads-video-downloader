@@ -7,6 +7,8 @@ const ROUTES = [
   { path: '/threads-video-download/', priority: 0.7, changeFrequency: 'weekly' as const },
   { path: '/threads-image-downloader/', priority: 0.8, changeFrequency: 'weekly' as const },
   { path: '/threads-gif-downloader/', priority: 0.7, changeFrequency: 'weekly' as const },
+  { path: '/threads-to-mp4/', priority: 0.7, changeFrequency: 'weekly' as const },
+  { path: '/meta-ai-video-downloader/', priority: 0.6, changeFrequency: 'monthly' as const },
   { path: '/how-to-download-threads-videos/', priority: 0.7, changeFrequency: 'monthly' as const },
   { path: '/threads-video-downloader-android/', priority: 0.6, changeFrequency: 'monthly' as const },
   { path: '/threads-video-downloader-iphone/', priority: 0.6, changeFrequency: 'monthly' as const },

@@ -97,6 +97,17 @@ export function Downloader({ ctaLabel = 'Download Video', placeholder = 'Paste T
     setStarted(true);
   }
 
+  function handleCoverDownload() {
+    if (!media?.thumbnail) return;
+    trackEvent('thumbnail_download', { mediaKind: media.mediaKind });
+    const a = document.createElement('a');
+    a.href = buildDownloadUrl({ url: media.thumbnail, downloadId: media.thumbnailDownloadId }, `threads-${media.postId}-cover`, true);
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+
   function reset() {
     abortRef.current?.abort();
     setStatus('idle');
@@ -202,6 +213,7 @@ export function Downloader({ ctaLabel = 'Download Video', placeholder = 'Paste T
             onSelectQuality={setSelectedQuality}
             onDownload={handleDownload}
             onPasteAnother={pasteAnother}
+            onDownloadCover={handleCoverDownload}
             started={started}
           />
         )}
@@ -225,6 +237,7 @@ function MediaPreview({
   onSelectQuality,
   onDownload,
   onPasteAnother,
+  onDownloadCover,
   started,
 }: {
   media: ResolvedMediaDto;
@@ -232,12 +245,27 @@ function MediaPreview({
   onSelectQuality: (i: number) => void;
   onDownload: () => void;
   onPasteAnother: () => void;
+  onDownloadCover: () => void;
   started: boolean;
 }) {
+  const [copied, setCopied] = useState(false);
   const quality = media.qualities[selectedQuality];
   const kind = KIND_LABEL[media.mediaKind];
   const format = FORMAT_LABEL[media.mediaKind];
   const size = formatBytes(quality?.fileSizeBytes);
+  const canSaveCover = media.mediaKind !== 'image' && !!media.thumbnailDownloadId;
+
+  async function copyCaption() {
+    if (!media.caption) return;
+    try {
+      await navigator.clipboard.writeText(media.caption);
+      trackEvent('caption_copy');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard access can be blocked; the caption is still visible to select by hand.
+    }
+  }
 
   return (
     <div className="animate-fadeUp overflow-hidden rounded-3xl border border-line bg-white text-left shadow-lift">
@@ -275,7 +303,18 @@ function MediaPreview({
             {media.author?.username && <span className="text-sm font-medium text-ink-2">@{media.author.username}</span>}
           </div>
 
-          {media.caption && <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-ink-2">{media.caption}</p>}
+          {media.caption && (
+            <div className="mt-3">
+              <p className="line-clamp-3 text-sm leading-relaxed text-ink-2">{media.caption}</p>
+              <button
+                type="button"
+                onClick={copyCaption}
+                className="mt-1.5 text-xs font-bold text-accent-lo underline underline-offset-2 hover:text-ink"
+              >
+                {copied ? 'Caption copied' : 'Copy caption'}
+              </button>
+            </div>
+          )}
 
           <div className="mt-4 grid grid-cols-3 gap-2.5">
             <Stat label="Format" value={format} />
@@ -328,6 +367,16 @@ function MediaPreview({
             >
               {started ? 'Download started. Check your downloads folder.' : `Your ${kind} is ready.`}
             </p>
+
+            {canSaveCover && (
+              <button
+                type="button"
+                onClick={onDownloadCover}
+                className="btn-secondary mt-2.5 w-full py-2.5 text-sm"
+              >
+                Save cover image (JPG)
+              </button>
+            )}
 
             <button
               type="button"
