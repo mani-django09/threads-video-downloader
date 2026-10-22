@@ -57,7 +57,7 @@ const KINDS = [
   {
     title: 'Videos',
     format: 'MP4',
-    href: '/threads-video-downloader/',
+    href: '/threads-to-mp4/',
     text: "Native clips and reposted videos from public posts. Vertical, square or widescreen, you get it exactly as it was posted.",
     tone: 'from-accent to-[#7a45f0]',
   },

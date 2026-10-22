@@ -97,7 +97,7 @@ export function GifDownloaderMore() {
         </ul>
         <p>
           Our <Link href="/disclaimer/">disclaimer</Link> sets out what responsible use looks like, and if you want a regular video clip rather than a loop, the{' '}
-          <Link href="/threads-video-downloader/">video downloader</Link> is the page for that.
+          <Link href="/">video downloader</Link> is the page for that.
         </p>
       </Section>
     </>

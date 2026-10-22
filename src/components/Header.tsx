@@ -5,7 +5,8 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const NAV_LINKS = [
-  { href: '/threads-video-downloader/', label: 'Video Downloader' },
+  { href: '/threads-to-mp4/', label: 'Threads to MP4' },
+  { href: '/threads-to-mp3/', label: 'Threads to MP3' },
   { href: '/threads-image-downloader/', label: 'Image Downloader' },
   { href: '/how-to-download-threads-videos/', label: 'How It Works' },
   { href: '/faq/', label: 'FAQ' },
@@ -77,8 +78,8 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <Link href="/threads-video-downloader/" className="btn-primary px-4 py-2 text-xs">
-            Download Video
+          <Link href="/" className="btn-primary px-4 py-2 text-xs">
+            Download
           </Link>
         </div>
 
@@ -113,8 +114,8 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/threads-video-downloader/" className="btn-cta mt-2 w-full py-2.5 text-sm">
-              Download Video
+            <Link href="/" className="btn-cta mt-2 w-full py-2.5 text-sm">
+              Download
             </Link>
           </nav>
         </div>

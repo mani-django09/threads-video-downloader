@@ -19,7 +19,7 @@ interface DownloaderProps {
 const KIND_LABEL = { video: 'video', image: 'photo', gif: 'GIF' } as const;
 const FORMAT_LABEL = { video: 'MP4', image: 'JPG', gif: 'GIF' } as const;
 
-export function Downloader({ ctaLabel = 'Download Video', placeholder = 'Paste Threads video URL here' }: DownloaderProps) {
+export function Downloader({ ctaLabel = 'Download', placeholder = 'Paste Threads video URL here' }: DownloaderProps) {
   const [url, setUrl] = useState('');
   const [status, setStatus] = useState<Status>('idle');
   const [step, setStep] = useState(0);
@@ -181,7 +181,7 @@ export function Downloader({ ctaLabel = 'Download Video', placeholder = 'Paste T
             <span className="hidden sm:inline">Paste</span>
           </button>
         </div>
-        <button type="submit" disabled={busy} className="btn-cta h-12 gap-2 whitespace-nowrap px-6 py-0 text-sm">
+        <button type="submit" disabled={busy} className="btn-cta h-10 gap-1.5 self-center whitespace-nowrap px-4 py-0 text-xs">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path
               d="M12 3v11.5m0 0-4-4m4 4 4-4M5 17.5c0 2 3 3.5 7 3.5s7-1.5 7-3.5"

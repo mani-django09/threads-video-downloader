@@ -124,7 +124,7 @@ export function ImageDownloaderMore() {
         </ul>
         <p>
           For posts that mix media, such as a photo and a short clip, the tool recognises the kind of file for each link you paste. If you want the clip, the{' '}
-          <Link href="/threads-video-downloader/">video downloader</Link> and the <Link href="/threads-gif-downloader/">GIF downloader</Link> use the same box.
+          <Link href="/">video downloader</Link> and the <Link href="/threads-gif-downloader/">GIF downloader</Link> use the same box.
         </p>
       </Section>
     </>

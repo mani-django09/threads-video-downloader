@@ -38,6 +38,9 @@ const nextConfig = {
   // The site does not use next/image, so the image optimizer endpoint is switched off
   // entirely rather than left exposed.
   images: { unoptimized: true },
+  async redirects() {
+    return [{ source: '/threads-video-downloader/', destination: '/threads-to-mp4/', permanent: true }];
+  },
   async headers() {
     return [
       {

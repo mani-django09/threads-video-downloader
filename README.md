@@ -1,6 +1,6 @@
 # Threads Video Downloader
 
-**Live site: [threadsdl.io](https://threadsdl.io/)** · [Video downloader](https://threadsdl.io/threads-video-downloader/) · [Image downloader](https://threadsdl.io/threads-image-downloader/) · [GIF downloader](https://threadsdl.io/threads-gif-downloader/) · [How it works](https://threadsdl.io/how-to-download-threads-videos/)
+**Live site: [threadsdl.io](https://threadsdl.io/)** · [Threads to MP4](https://threadsdl.io/threads-to-mp4/) · [Threads to MP3](https://threadsdl.io/threads-to-mp3/) · [Image downloader](https://threadsdl.io/threads-image-downloader/) · [GIF downloader](https://threadsdl.io/threads-gif-downloader/) · [How it works](https://threadsdl.io/how-to-download-threads-videos/)
 
 Free online tool to save videos, photos and GIFs from public Threads posts. Paste a post link, preview the media and download the original file, with no app to install and no Threads login. This repository is the full source of the site.
 

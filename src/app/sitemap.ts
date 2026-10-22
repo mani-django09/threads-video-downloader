@@ -3,7 +3,7 @@ import { SITE_URL } from '@/lib/site';
 
 const ROUTES = [
   { path: '/', priority: 1, changeFrequency: 'daily' as const },
-  { path: '/threads-video-downloader/', priority: 0.9, changeFrequency: 'daily' as const },
+  { path: '/threads-to-mp3/', priority: 0.8, changeFrequency: 'weekly' as const },
   { path: '/threads-video-download/', priority: 0.7, changeFrequency: 'weekly' as const },
   { path: '/threads-image-downloader/', priority: 0.8, changeFrequency: 'weekly' as const },
   { path: '/threads-gif-downloader/', priority: 0.7, changeFrequency: 'weekly' as const },

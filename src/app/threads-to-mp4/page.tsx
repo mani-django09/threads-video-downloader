@@ -147,7 +147,7 @@ export default function ThreadsToMp4Page() {
       <Section eyebrow="Related" title="Other things you might need">
         <ul>
           <li>
-            The main <Link href="/threads-video-downloader/">Threads video downloader</Link> page covers quality, file size and sharing in more depth.
+            The main <Link href="/">Threads video downloader</Link> on the homepage covers saving, quality and file size.
           </li>
           <li>
             Something not saving? <Link href="/threads-video-download/">Troubleshooting and error messages</Link> explains each one.

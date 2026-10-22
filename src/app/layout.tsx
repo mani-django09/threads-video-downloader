@@ -40,11 +40,6 @@ const websiteJsonLd = {
   '@type': 'WebSite',
   name: SITE_NAME,
   url: SITE_URL,
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: `${SITE_URL}/threads-video-downloader/?q={search_term_string}`,
-    'query-input': 'required name=search_term_string',
-  },
 };
 
 const organizationJsonLd = {

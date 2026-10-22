@@ -96,7 +96,7 @@ export default function HowToPage() {
         highlight="Download"
         description="From finding the link in the app to having the MP4 on your device. It takes about as long as reading this sentence twice."
       >
-        <Link href="/threads-video-downloader/" className="btn-cta px-7 py-3.5">
+        <Link href="/" className="btn-cta px-7 py-3.5">
           Open the downloader
         </Link>
       </PageHero>
