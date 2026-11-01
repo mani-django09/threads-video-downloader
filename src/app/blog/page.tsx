@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { PageHero } from '@/components/PageHero';
-import { BLOG_POSTS, formatPostDate } from '@/content/blog';
+import { BLOG_POSTS, coverImage, formatPostDate } from '@/content/blog';
 import { pageMetadata } from '@/lib/seo';
 
 const PATH = '/blog/';
@@ -29,6 +29,10 @@ export default function BlogPage() {
         <div className="grid gap-5 md:grid-cols-2">
           {BLOG_POSTS.map((post) => (
             <article key={post.slug} className="bento flex flex-col">
+              <Link href={`/blog/${post.slug}/`} tabIndex={-1} aria-hidden="true" className="mb-4 block overflow-hidden rounded-xl">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={coverImage(post)} alt="" width={1200} height={630} loading="lazy" className="h-auto w-full" />
+              </Link>
               <p className="text-xs font-semibold text-ink-3">
                 {formatPostDate(post.date)} · {post.readingMinutes} min read
               </p>

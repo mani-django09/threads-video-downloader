@@ -9,6 +9,8 @@ interface PageMetadataInput {
   path: string;
   /** Publication date (YYYY-MM-DD). Marks the page as an article for social previews. */
   publishedTime?: string;
+  /** Social preview image path (1200x630). Defaults to the site-wide image. */
+  imagePath?: string;
 }
 
 /**
@@ -16,8 +18,8 @@ interface PageMetadataInput {
  * parent's instead of merging, which silently drops og:image -- so the image is
  * always set here rather than relying on inheritance.
  */
-export function pageMetadata({ title, description, path, publishedTime }: PageMetadataInput): Metadata {
-  const image = { url: absoluteUrl('/opengraph-image'), width: 1200, height: 630, alt: 'Threads Downloader' };
+export function pageMetadata({ title, description, path, publishedTime, imagePath = '/opengraph-image' }: PageMetadataInput): Metadata {
+  const image = { url: absoluteUrl(imagePath), width: 1200, height: 630, alt: 'Threads Downloader' };
   const shared = { url: absoluteUrl(path), title, description, images: [image] };
   return {
     title: { absolute: title },

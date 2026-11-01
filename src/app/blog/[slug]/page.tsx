@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { JsonLd } from '@/components/JsonLd';
 import { PageHero } from '@/components/PageHero';
-import { BLOG_POSTS, formatPostDate, getBlogPost } from '@/content/blog';
+import { BLOG_POSTS, coverImage, formatPostDate, getBlogPost } from '@/content/blog';
 import { pageMetadata } from '@/lib/seo';
 import { absoluteUrl, SITE_NAME, SITE_URL } from '@/lib/site';
 
@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
     description: post.description,
     path: `/blog/${post.slug}/`,
     publishedTime: post.date,
+    imagePath: coverImage(post),
   });
 }
 
@@ -46,7 +47,7 @@ export default async function BlogPostPage({ params }: PostPageProps) {
     dateModified: post.date,
     url: absoluteUrl(path),
     mainEntityOfPage: absoluteUrl(path),
-    image: absoluteUrl('/opengraph-image'),
+    image: absoluteUrl(coverImage(post)),
     author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     publisher: { '@type': 'Organization', name: SITE_NAME, logo: { '@type': 'ImageObject', url: absoluteUrl('/icon-512.png') } },
   };
@@ -65,6 +66,17 @@ export default async function BlogPostPage({ params }: PostPageProps) {
       <PageHero eyebrow={`${formatPostDate(post.date)} · ${post.readingMinutes} min read`} title={post.title} description={post.description} />
 
       <article className="container-app py-10 sm:py-14">
+        <div className="mx-auto max-w-3xl">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={coverImage(post)}
+            alt={post.imageAlt}
+            width={1200}
+            height={630}
+            fetchPriority="high"
+            className="mb-8 h-auto w-full rounded-2xl border border-line shadow-card"
+          />
+        </div>
         <div className="prose-content mx-auto max-w-3xl">
           <Body />
         </div>
