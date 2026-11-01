@@ -4,7 +4,7 @@ export const FULL_FAQ: FaqItem[] = [
   {
     question: 'How do I download a Threads video?',
     answer:
-      'Copy the link to a public Threads post, paste it into the box on this page, and click "Download Video." Once the preview loads, pick a quality and click the download button to save the MP4 file.',
+      'Copy the link to a public Threads post, paste it into the box on this page, and click "Download." Once the preview loads, pick a quality and click the download button to save the MP4 file.',
   },
   {
     question: 'Is the Threads Video Downloader free?',
@@ -96,7 +96,7 @@ export const IMAGE_FAQ: FaqItem[] = [
   {
     question: 'How do I download a photo from Threads?',
     answer:
-      'Paste the public post URL into the box above and click "Download Video" — the tool detects that the post is a photo and shows a "Download Image" button instead, which saves the file as a JPEG.',
+      'Paste the public post URL into the box above and click "Download" — the tool detects that the post is a photo and shows a "Download Image" button instead, which saves the file as a JPEG.',
   },
   {
     question: 'Can I download every photo in a multi-photo post?',

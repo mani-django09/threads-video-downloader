@@ -21,7 +21,7 @@ const howToJsonLd = {
   step: [
     { '@type': 'HowToStep', name: 'Find the post', text: 'Open the public Threads post that contains the video you want to save.' },
     { '@type': 'HowToStep', name: 'Copy the link', text: 'Tap the share icon under the post and choose "Copy link".' },
-    { '@type': 'HowToStep', name: 'Paste the URL', text: 'Paste the link into the Threads Video Downloader input field and press Download Video.' },
+    { '@type': 'HowToStep', name: 'Paste the URL', text: 'Paste the link into the Threads Video Downloader input field and press Download.' },
     { '@type': 'HowToStep', name: 'Save the file', text: 'Check the preview, then press the download button to save the MP4 to your device.' },
   ],
 };
@@ -45,7 +45,7 @@ const STEPS = [
   {
     title: 'Paste it into the downloader',
     body: [
-      'Go back to the box at the top of the page (or open the video downloader), paste the link and press Download Video. Tapping Paste inside the box does the same thing in one tap, if your browser allows clipboard access.',
+      'Go back to the box at the top of the page (or open the video downloader), paste the link and press Download. Tapping Paste inside the box does the same thing in one tap, if your browser allows clipboard access.',
       'A few seconds later you will see a preview with the caption, the file format and the file size.',
     ],
   },

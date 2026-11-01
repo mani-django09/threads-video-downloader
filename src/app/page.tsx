@@ -44,7 +44,7 @@ const STEPS = [
   {
     n: '02',
     title: 'Paste it above',
-    text: "Drop it into the box and press Download Video. We check that it's a real Threads link before doing anything else.",
+    text: "Drop it into the box and press Download. We check that it's a real Threads link before doing anything else.",
   },
   {
     n: '03',

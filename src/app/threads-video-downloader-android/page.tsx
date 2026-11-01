@@ -19,7 +19,7 @@ export const metadata: Metadata = pageMetadata({
 const STEPS = [
   'In the Threads app, tap the share arrow under the post and choose Copy link.',
   'Open Chrome (or Samsung Internet, or Firefox) and come back to this page.',
-  'Paste the link, or tap the Paste button, then press Download Video.',
+  'Paste the link, or tap the Paste button, then press Download.',
   'Check the preview and tap the download button. The MP4 saves to your Downloads folder.',
 ];
 

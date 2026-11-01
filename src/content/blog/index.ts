@@ -14,7 +14,7 @@ export interface BlogPost {
   /** Publication date as YYYY-MM-DD. */
   date: string;
   readingMinutes: number;
-  /** Describes the cover image, which lives at /images/blog/<slug>.png. */
+  /** Describes the cover image, which lives at /images/blog/<slug>.jpg. */
   imageAlt: string;
   Body: ComponentType;
 }
@@ -29,7 +29,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'A clip that looked fine in the app can turn soft on a laptop or TV. How to check what you really have, why it happens, and which fixes work.',
     date: '2026-11-01',
     readingMinutes: 4,
-    imageAlt: 'A sharp landscape on a phone next to the same picture turned blocky on a large monitor',
+    imageAlt: 'A hand holding a phone with a sharp video of a dancer while the same video looks blocky on a large TV behind it',
     Body: BlurryVideo,
   },
   {
@@ -40,7 +40,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Two ways to keep a copy of your Threads posts: the export Meta offers, and saving your best clips one by one. When to use each, and what the export leaves out.',
     date: '2026-11-01',
     readingMinutes: 4,
-    imageAlt: 'A stack of Threads video posts moving into a folder marked with a green check',
+    imageAlt: 'A strip of film flowing from a phone into an external drive on a wooden desk at night',
     Body: BackUpPosts,
   },
   {
@@ -51,7 +51,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'WhatsApp shrinks videos sent the normal way, and HD mode only shrinks them less. Sending the clip as a document keeps it intact. Here is how, on iPhone and Android.',
     date: '2026-11-01',
     readingMinutes: 3,
-    imageAlt: 'A chat conversation with an MP4 file sent as a document and marked as read',
+    imageAlt: 'A sharp sunset video frame travelling in an arc of green light between two phones on a marble cafe table',
     Body: WhatsAppQuality,
   },
   {
@@ -62,13 +62,13 @@ export const BLOG_POSTS: BlogPost[] = [
       'Public does not mean free to reuse. What you can do with a saved clip, when you need permission, and a short message you can send to get it.',
     date: '2026-11-01',
     readingMinutes: 4,
-    imageAlt: 'A video post, repost arrows and a card with a copyright symbol and a green check',
+    imageAlt: 'A person reaching toward a framed video of a dancer in a dark gallery while another visitor looks on',
     Body: RepostRules,
   },
 ];
 
 export function coverImage(post: BlogPost): string {
-  return `/images/blog/${post.slug}.png`;
+  return `/images/blog/${post.slug}.jpg`;
 }
 
 export function getBlogPost(slug: string): BlogPost | undefined {
