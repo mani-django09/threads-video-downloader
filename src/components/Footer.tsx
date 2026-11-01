@@ -16,6 +16,7 @@ const COLUMNS: Array<{ title: string; links: Array<{ href: string; label: string
       { href: '/how-to-download-threads-videos/', label: 'How to Download Threads Videos' },
       { href: '/threads-video-downloader-android/', label: 'For Android' },
       { href: '/threads-video-downloader-iphone/', label: 'For iPhone' },
+      { href: '/blog/', label: 'Blog' },
       { href: '/faq/', label: 'FAQ' },
     ],
   },

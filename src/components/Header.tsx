@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { href: '/threads-to-mp3/', label: 'Threads to MP3' },
   { href: '/threads-image-downloader/', label: 'Image Downloader' },
   { href: '/how-to-download-threads-videos/', label: 'How It Works' },
+  { href: '/blog/', label: 'Blog' },
   { href: '/faq/', label: 'FAQ' },
 ];
 
@@ -62,13 +63,13 @@ export function Header() {
       <div className="container-app flex h-16 items-center justify-between">
         <Logo />
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               aria-current={isActive(link.href) ? 'page' : undefined}
-              className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+              className={`whitespace-nowrap rounded-full px-3 py-2 text-sm font-semibold transition-colors xl:px-4 ${
                 isActive(link.href) ? 'bg-ink text-white' : 'text-ink-2 hover:bg-ink/5 hover:text-ink'
               }`}
             >
@@ -77,7 +78,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Link href="/" className="btn-primary px-4 py-2 text-xs">
             Download
           </Link>
@@ -88,7 +89,7 @@ export function Header() {
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white/80 md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white/80 lg:hidden"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             {open ? (
@@ -101,7 +102,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="animate-fadeUp border-t border-line bg-white/95 backdrop-blur-xl md:hidden">
+        <div className="animate-fadeUp border-t border-line bg-white/95 backdrop-blur-xl lg:hidden">
           <nav className="container-app flex flex-col gap-1 py-3" aria-label="Mobile">
             {NAV_LINKS.map((link) => (
               <Link

@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { BLOG_POSTS } from '@/content/blog';
 import { SITE_URL } from '@/lib/site';
 
 const ROUTES = [
@@ -12,6 +13,8 @@ const ROUTES = [
   { path: '/threads-video-downloader-android/', priority: 0.6, changeFrequency: 'monthly' as const },
   { path: '/threads-video-downloader-iphone/', priority: 0.6, changeFrequency: 'monthly' as const },
   { path: '/faq/', priority: 0.5, changeFrequency: 'monthly' as const },
+  { path: '/blog/', priority: 0.6, changeFrequency: 'weekly' as const },
+  ...BLOG_POSTS.map((post) => ({ path: `/blog/${post.slug}/`, priority: 0.6, changeFrequency: 'monthly' as const })),
   { path: '/about/', priority: 0.5, changeFrequency: 'monthly' as const },
   { path: '/privacy-policy/', priority: 0.3, changeFrequency: 'yearly' as const },
   { path: '/terms-of-service/', priority: 0.3, changeFrequency: 'yearly' as const },
